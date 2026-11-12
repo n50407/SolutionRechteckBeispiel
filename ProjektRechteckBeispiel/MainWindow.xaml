@@ -1,0 +1,31 @@
+﻿<Window x:Class="ProjektRechteckBeispiel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektRechteckBeispiel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <!--Extension Syntax in WPF {} -->
+        <TextBlock>Länge</TextBlock>
+        <TextBox Text="{Binding Laenge}" ></TextBox>
+        <TextBlock>Breite</TextBlock>
+        <TextBox Text="{Binding Breite}"></TextBox>
+        <TextBlock>Farbe</TextBlock>
+        <TextBox Text="{Binding Farbe}"></TextBox>
+        <Button Width="{Binding Laenge}"
+                Height="{Binding Breite}" 
+                Background="{Binding Farbe}" >
+            <Button.Content>
+                <StackPanel>
+                <TextBlock Text="Mein Rechteck" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Umfang}"></TextBlock>
+                    <TextBlock Text="Flaeche" />
+                    <TextBlock Text="{Binding Flaeche}"></TextBlock>
+                    
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel>
+</Window>
