@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektRechteckBeispiel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding SpruchDesTages}" Height="450" Width="800">
     <StackPanel>
         <!--Extension Syntax in WPF {} -->
         <TextBlock>Länge</TextBlock>
-        <TextBox Text="{Binding Laenge}" ></TextBox>
+        <TextBox Text="{Binding Laenge, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ></TextBox>
         <TextBlock>Breite</TextBlock>
         <TextBox Text="{Binding Breite}"></TextBox>
         <TextBlock>Farbe</TextBlock>
         <TextBox Text="{Binding Farbe}"></TextBox>
         <Button Width="{Binding Laenge}"
                 Height="{Binding Breite}" 
-                Background="{Binding Farbe}" >
+                Background="{Binding Farbe}" Click="BeimButtonKlick" >
             <Button.Content>
                 <StackPanel>
                 <TextBlock Text="Mein Rechteck" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -27,5 +27,18 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+        <!--Entwerfen Sie eine .NET WPF Application zum Berechnen von Bankspesen
+        Spesen betragen normalerweise 10% des Betrages, bei Expressüberweisungen fallen 15% an
+        sobald ein Betrag eingegeben oder geändert wird, soll der Spesenbetrag angezeigt werden
+        Wenn die Checkbox aktiviert ist, fallen 15 % Spesen an
+        -->
+
+        <TextBox Text="{Binding Ueberweisungbetrag, 
+            UpdateSourceTrigger=PropertyChanged,
+            Mode=TwoWay}">            
+        </TextBox>
+        <Label>Spesen (10% des Betrags bei Normal, 15 % bei Express</Label>
+        <CheckBox IsChecked="{Binding IstExpressAktiviert}" >Express</CheckBox>
+        <Label Background="{Binding SignalFarbe}" Content="{Binding SpesenAusgabe}"></Label>
     </StackPanel>
 </Window>

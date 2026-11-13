@@ -9,13 +9,15 @@ namespace ProjektRechteckBeispiel.Models
 {
 
 	//POCO - PLAIN OLD C# OBJECT vs POJO
-	internal class Rechteck: INotifyPropertyChanged
+	internal class Rechteck:  INotifyPropertyChanged
 	{
         public event PropertyChangedEventHandler PropertyChanged;
 
         private int _Laenge;
 
-		public int Laenge
+        public string SpruchDesTages { get; set; }
+
+        public int Laenge
 		{
 			get { return _Laenge; }
 			set { 
